@@ -9,6 +9,7 @@
 // una griglia di gioco quadrata composta da 100 celle
 // 4) Genero virtualmente il primo quadrato della mia griglia di gioco
 // 5) Attraverso un ciclo for genero tutti i quadrati della griglia del campo minato 
+// 6) Creo un addEventListener su ogni singolo square della griglia al fine di poterli colorare di azzurro al click 
 
 
 "use strict"
@@ -36,14 +37,16 @@ function onBtnClick() {
 
 /**
  * Questa funzione genera un singolo quadrato virtuale della griglia
- * @param {*} squareContent Contenuto testuale da inserire all'interno del quadrato creato
+ * @param {string} squareContent Contenuto testuale da inserire all'interno del quadrato creato
+ * @param {number} totalSquares  Numero totale di quadrati da creare
  * @returns {HTMLDivElement}
  */
 
-function createSingleSquare(squareContent) {
+function createSingleSquare(squareContent, totalSquares) {
     const square = document.createElement("div");
     square.classList.add("grid-square");
     square.textContent = squareContent;
+
     return square;
 }
 
@@ -58,6 +61,10 @@ function createGrid(squaresNumber) {
         // Salvo in una variabile l'output della funzione createSingleSquare altrimenti andrei a perdere quell'output 
         const newSquare = createSingleSquare(i);
         grid.push(newSquare);
+        newSquare.addEventListener("click", function() {
+            newSquare.classList.toggle("bg-primary");
+            console.log(`Hai colorato la cella numero ${i}`);
+        })
     }
 
     return grid;
