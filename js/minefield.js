@@ -24,10 +24,10 @@ btnPlay.addEventListener("click", onBtnClick);
 
 function onBtnClick() {
 
-    const squareCounts = 100;
+    const totalSquares = 100;
 
     // Genero la griglia in modo virtuale sottoforma di array, ma non viene aggiunta al Dom automaticamente. Successivamente devo aggiungerla al file html
-    const gridList = createGrid(squareCounts);
+    const gridList = createGrid(totalSquares);
     console.log(gridList);
 
     // Invoco la funzione che aggiunge al Dom i vari quadrati.
@@ -54,7 +54,7 @@ function createSingleSquare(squareContent) {
  */
 function createGrid(squaresNumber) {
     const grid = [];
-    for (let i = 0; i < squaresNumber; i++) {
+    for (let i = 1; i <= squaresNumber; i++) {
         // Salvo in una variabile l'output della funzione createSingleSquare altrimenti andrei a perdere quell'output 
         const newSquare = createSingleSquare(i);
         grid.push(newSquare);
