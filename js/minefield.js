@@ -1,13 +1,6 @@
 // Consegna 1:
 // L’utente clicca su un bottone che genererà una griglia di gioco quadrata composta da 100 celle (ci saranno quindi 10 caselle per ognuna delle 10 righe). Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
 
-// Consegna 2: Il computer deve generare 16 numeri casuali: le bombe. Attenzione: nella stessa cella può essere posizionata al massimo una bomba, perciò nell’array delle bombe non potranno esserci due numeri uguali.
-// In seguito l’utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina. Altrimenti la cella cliccata si colora di azzurro e l’utente può continuare a cliccare sulle altre celle.
-// La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
-// Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
-
-
-
 // Procedimento 1: 
 // 1) Scrivo prima cosa voglio fare passo passo in italiano, dividendo il lavoro in micro problemi
 // 2) Per accettarmi di capire se sto facendo le cose bene ad ogni step utilizzo il "console.log"
@@ -17,8 +10,6 @@
 // 5) Attraverso un ciclo for genero tutti i quadrati della griglia del campo minato 
 // 6) Creo un addEventListener su ogni singolo square della griglia al fine di poterli colorare di azzurro al click 
 
-// Procedimento 2: 
-// 1) Generare mediante la funzione Math Random() 16 numeri casuali non ripetuti 
 
 "use strict"
 
@@ -41,12 +32,7 @@ function onBtnClick() {
 
     // Invoco la funzione che aggiunge al Dom i vari quadrati.
     printGrid(gridContainer, gridList) 
-
-    // Invoco la funzione per generare le caselle, nelle quali saranno posizionate le bombe
-    createBombs ()
-
-    // Invoco la funzione per colorare la cella di rosso se l'utente clicca su una bomba
-    // endGame ()
+    
 }
 
 /**
@@ -97,33 +83,3 @@ function printGrid(container, squaresList) {
         container.append(squaresList[i]);
     }
 }
-
-/**
- * Dichiarazione funzione per generare le bombe con un array di 16 numeri casuali non ripetuti compresi tra 1 e 100
- * @param {num} bombsNumber è il numero delle bombe presenti nella griglia
- * @return {num[]} arrayBombs è l'array contenente il numero delle celle in cui verrano inserite le bombe
- */
-
-function createBombs () {
-    const arrayBombs = [];
-    for (let i = 0; i < 16; i++) {
-        const bombsBoxes =  Math.floor(Math.random() * 100) + 1;
-        if (!arrayBombs.includes(bombsBoxes))
-            arrayBombs.push(bombsBoxes);
-            // Altrimenti potrei usare anche questo metodo per impedire la ripetizione dei numeri delle celle
-            // if (arrayBombs.indexOf(bombsBoxes) === -1){
-            //     arrayBombs.push(bombsBoxes);
-            // } else {
-            //     i--
-        }
-        // Verifico attraverso la funzione console.log se la funzione è corretta
-        console.log(`Le caselle delle bombe sono: ${arrayBombs}`);
-
-        return arrayBombs;
-    }
-
-
-    
-
-
-
